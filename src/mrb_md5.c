@@ -29,9 +29,9 @@ mrb_md5_hex(mrb_state *mrb, mrb_value self)
     mrb_raise(mrb, E_ARGUMENT_ERROR, "invalid argument");
   }
 
-  md5_init(&pms);
-  md5_append(&pms, (const md5_byte_t*) RSTRING_PTR(arg), RSTRING_LEN(arg));
-  md5_finish(&pms, digest);
+  _md5_init(&pms);
+  _md5_append(&pms, (const md5_byte_t*) RSTRING_PTR(arg), RSTRING_LEN(arg));
+  _md5_finish(&pms, digest);
 
   for (i = 0; i < 16; i++) {
     digest_hex[i*2+0] = nr2char((digest[i] >> 4) & 0xf);
